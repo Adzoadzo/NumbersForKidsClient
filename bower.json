@@ -1,0 +1,27 @@
+{
+  "name": "numbers-for-kids",
+  "authors": [
+    "Atif Kotoric"
+  ],
+  "description": "Client for Numbers for Kids app",
+  "main": "public/index.html",
+  "keywords": [
+    "material",
+    "design",
+    "material-ui",
+    "material",
+    "design",
+    "google",
+    "twitter"
+  ],
+  "license": "Creative TIM License",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "build"
+  ],
+  "private": true
+}
