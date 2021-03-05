@@ -112,6 +112,11 @@ const QuizForm = ({
     // get current user if not in store
     React.useEffect(() => {
         setFormData({ ...quiz })
+        console.log(quiz, 'questions');
+
+        if (quiz?.questions) {
+            setQuestions(quiz.questions);
+        }
     }, [quiz, tab]);
 
     const handleChange = (e) => {

@@ -1,5 +1,5 @@
 import { position, users } from '../api';
-export function listUsers(filter = { field: 'uid', val: '' }, skip = 0, limit, orderby, clean = false, isSearch = true) {
+export function listUsers(filter = { field: 'id', val: '' }, skip = 0, limit, orderby, clean = false, isSearch = true) {
 	const queryObj = {}
 	// if (filter?.field) queryObj.filterProp = filter?.field
 	// if (filter?.val) queryObj.filterVal = filter?.val

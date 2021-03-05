@@ -31,7 +31,7 @@ const rand = () => {
 }
 
 const getModalStyle = () => {
-  const top = 50;
+  const top = 55;
   const left = 50 + rand();
 
   return {
