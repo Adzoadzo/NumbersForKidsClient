@@ -60,7 +60,7 @@ export const users = {
 
 export const quizzes = {
 	...crud("/v1/teacher/quizzes"),
-	submitQuiz: (data) => post(`${BASE_URL}/admin/user/set-password`, data),
+	submitQuiz: (id, data) => post(`${BASE_URL}/v1/quizzes/${id}/submit`, data),
 	list: (params) => {
 		const query = Object.keys(params).map(key => key + '=' + params[key]).join('&');
 		return get(`${BASE_URL}/v1/quizzes?${query}`)

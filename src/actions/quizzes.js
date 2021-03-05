@@ -25,6 +25,14 @@ export function getQuiz(id) {
 	}
 }
 
+export function submitQuiz(id, results) {
+	const res = quizzes.submitQuiz(id, results)
+	return {
+		type: 'SUBMIT_QUIZ',
+		payload: res
+	}
+}
+
 export function clearSelectedQuiz() {
 	return {
 		type: 'CLEAR_QUIZ',

@@ -7,7 +7,8 @@ const initalState = {
     errors: {},
     notification: undefined,
     mode: undefined,
-    rowsPerPage: 5
+    rowsPerPage: 5,
+    correct: undefined
 };
 
 export default function reducer(state = initalState, action) {
@@ -168,6 +169,12 @@ export default function reducer(state = initalState, action) {
                 ...state,
                 request: { ...state.request, pending: false, error: false, fulfilled: true },
                 rowsPerPage: action.payload
+            }
+        case 'SUBMIT_QUIZ_FULFILLED':
+            return {
+                ...state,
+                request: { ...state.request, pending: false, error: false, fulfilled: true },
+                correct: action.payload.correctAnswers
             }
         default:
             return state;
