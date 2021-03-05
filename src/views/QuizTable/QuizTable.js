@@ -119,15 +119,12 @@ function QuizzesTable({
   setNotification,
   users,
   errors,
+  listQuizzes,
   notification,
   setErrors,
   pagination,
   setRowsPerPage,
   rowsPerPage,
-  listUsersNoSearch,
-  listUsers,
-  getDevice,
-  clearSelectedQuiz,
   selectedDevice }) {
   const history = useHistory();
   const [skip, setSkip] = useState(0);
@@ -136,19 +133,17 @@ function QuizzesTable({
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
 
-  const addNewHandler = () => {
-    setFormMode('new');
-    listUsersNoSearch();
-  }
+  const listQuizzesDebounced = React.useCallback(debounce(listQuizzes, 500), []);
 
-  const editItemHandler = (e, item) => {
-    setFormMode('edit');
-    getDevice(item.uuid);
-    listUsersNoSearch();
+  React.useEffect(() => {
+    listQuizzesDebounced(filter, skip, rowsPerPage * 2, undefined, true)
+    setSkip(0);
+    setPage(0);
+  }, [filter, rowsPerPage]);
 
-    // don't trigger checkbox
-    e.stopPropagation();
-  }
+  React.useEffect(() => {
+    listQuizzesDebounced(filter, skip, rowsPerPage * 2, undefined, true);
+  }, [skip]);
 
 
   const closeToastHandler = () => {
@@ -185,9 +180,9 @@ function QuizzesTable({
         <Card>
           <CardHeader color="primary" className={classes.cardHeaderFlex}>
             <div>
-              <h4 className={classes.cardTitleWhite}>Lectures Table</h4>
+              <h4 className={classes.cardTitleWhite}>Quizzes Table</h4>
               <p className={classes.cardCategoryWhite}>
-                All lectures are displayed here
+                All quizzes are displayed here
             </p>
             </div>
           </CardHeader>
@@ -200,7 +195,7 @@ function QuizzesTable({
               disableSelection
               tableHeaderColor="primary"
               headCells={headCellsLectureTable}
-              rows={quizzes}
+              rows={searchResult}
               keyProp="id"
               totalSize={pagination?.total}
               filterActionHandler={filterItemsHandler}
@@ -225,6 +220,7 @@ const mapStateToProps = (state) => {
   console.log(state);
   return {
     quizzes: state.quizzes.quizData,
+    searchResult: state.quizzes.quizSearchResult,
     pagination: state.quizzes.pagination,
     loading: state.quizzes.request.loading,
     selectedDevice: state.quizzes.selectedDevice,

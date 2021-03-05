@@ -20,7 +20,6 @@ export function setLectureRowsPerPage(rpp) {
 	}
 }
 
-
 export function clearSelectedLecture() {
 	return {
 		type: 'CLEAR_LECTURE',

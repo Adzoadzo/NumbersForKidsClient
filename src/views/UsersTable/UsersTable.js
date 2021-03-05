@@ -177,7 +177,7 @@ function UsersTable({
   }, [filter, rowsPerPage]);
 
   React.useEffect(() => {
-    listUsersDebounced(filter, skip, rowsPerPage * 2, undefined, false);
+    listUsersDebounced(filter, skip, rowsPerPage * 2, undefined, true);
   }, [skip]);
 
   const addNewHandler = () => {

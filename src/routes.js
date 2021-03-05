@@ -30,6 +30,7 @@ import AdditionLecture from "views/Lectures/Addition.js";
 import SubtractionLecture from "views/Lectures/Subtraction.js";
 import MultiplicationLecture from "views/Lectures/Multiplication.js";
 import DivisionLecture from "views/Lectures/Division.js";
+import Quiz from "views/Quiz/Quiz";
 
 const dashboardRoutes = [
   {
@@ -117,7 +118,14 @@ const dashboardRoutes = [
     layout: "",
     exact: true,
   },
-  
+  {
+    path: "/quiz/:id",
+    name: "Quiz",
+    roles: ['Student'],
+    component: Quiz,
+    layout: "",
+    exact: true,
+  },
   {
     path: "/quizzes",
     name: "Quizzes",

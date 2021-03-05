@@ -56,32 +56,21 @@ const Quiz = ({ quiz, quizSubmitHandler }) => {
                 <GridItem xs={12} sm={12} md={8}>
                     <Card>
                         <CardHeader color="primary">
-                            <h4 className={classes.cardTitleWhite}>Addition</h4>
-                            <p className={classes.cardCategoryWhite}>Learn about addition</p>
+                            <h4 className={classes.cardTitleWhite}>{quiz?.name}</h4>
+                            <p className={classes.cardCategoryWhite}>{quiz?.subject}</p>
                         </CardHeader>
                         <CardBody>
                             <GridContainer />
 
                             <GridContainer>
                                 <GridItem xs={12} sm={12} md={12}>
-                                    <InputLabel style={{ color: "#AAAAAA" }}>About me</InputLabel>
-                                    <CustomInput
-                                        labelText="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."
-                                        id="about-me"
-                                        formControlProps={{
-                                            fullWidth: true
-                                        }}
-                                        inputProps={{
-                                            multiline: true,
-                                            rows: 5
-                                        }}
-                                    />
+                                    <InputLabel style={{ color: "#AAAAAA" }}>{quiz?.description}</InputLabel>
                                 </GridItem>
                             </GridContainer>
                         </CardBody>
                         <CardFooter className={classes.footer}>
                             <Button color="primary" onClick={backHandler}>Back</Button>
-                            <Button color="primary">Take Quiz</Button>
+                            <Button color="primary">Submit</Button>
                         </CardFooter>
                     </Card>
                 </GridItem>
